@@ -26,15 +26,15 @@ Results of research showed that there are multiple ways that event data can be e
 
 ### GCP Cloud Console and Pub/Sub
 Using the Cloud Console, you can do the following:
--View all of your sinks in one place.
--View which log entries are matched by your sink query before you create a sink
--Create and authorize export destinations for your sinks.
+- View all of your sinks in one place.
+- View which log entries are matched by your sink query before you create a sink
+- Create and authorize export destinations for your sinks.
 However, the Cloud Console can only create or view sinks in projects.
 
 Before you can create a sink, verify the following:
-*You have a Google Cloud Project with logs that you can see in the Logs Explorer.
-*You have the Owner or the Logging/Logs Configuration Writer IAM roles in the Cloud project to create, delete, or modify a sink. 
-*You have a destination service or have the ability to create a destination service.
+* You have a Google Cloud Project with logs that you can see in the Logs Explorer.
+* You have the Owner or the Logging/Logs Configuration Writer IAM roles in the Cloud project to create, delete, or modify a sink. 
+* You have a destination service or have the ability to create a destination service.
 
 [Link on steps to creating a sink in the GCP Console](https://cloud.google.com/logging/docs/export/configure_export_v2#creating_sink)
 
@@ -48,9 +48,9 @@ When you create a sink, Logging creates a new service account for the sink, call
 
 Pub/Sub pricing is based on:
 
-*Message ingestion and delivery
-*Seek-related message storage: snapshots and retained acknowledged messages
-*[Pub Sub Pricing](https://cloud.google.com/pubsub/pricing)
+* Message ingestion and delivery
+* Seek-related message storage: snapshots and retained acknowledged messages
+* [Pub Sub Pricing](https://cloud.google.com/pubsub/pricing)
 
 Trouble
 ## Recommendations
