@@ -23,8 +23,6 @@ What is Pub/Sub: an asynchronous messaging service that decouples services that 
 ## Results
 Results of research showed that there are multiple ways that event data can be exported back to the intended platform. You can export some or all of your logs to various sink destinations. The first option is to use GCP Cloud Logging API, and the second option is exporting logs with the Cloud Console and Pub/Sub.
 
-### GCP Cloud Logging API Method
-
 ### GCP Cloud Console and Pub/Sub
 Using the Cloud Console, you can do the following:
 - View all of your sinks in one place.
