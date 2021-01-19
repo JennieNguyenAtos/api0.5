@@ -14,7 +14,7 @@ The objective of this ticket is to gather information about the different event 
 
 ![Logs Router Image](https://cloud.google.com/logging/docs/images/logs-router-image.png)
 
-Exporting involves writing a filter that selects the log entries you want to export, and choosing a destination (such asn Pub/Sub: JSON messages delivered to Pub/Sub topics. Supports third party integrations such as Splunk, with Logging). The filter and destinations are held in an object called a sink. Sinks can be created in Google Cloud project, organizations, folders, and billing accounts. Link to sink propertiies and terminology: https://cloud.google.com/logging/docs/export#sink-terms
+Exporting involves writing a filter that selects the log entries you want to export, and choosing a destination (such asn Pub/Sub: JSON messages delivered to Pub/Sub topics. Supports third party integrations such as Splunk, with Logging). The filter and destinations are held in an object called a sink. Sinks can be created in Google Cloud project, organizations, folders, and billing accounts. [Link to sink propertiies and terminology](https://cloud.google.com/logging/docs/export#sink-terms)
 
 How sinks work: Every time a log entry arrives in a project, folder, billing account, or organization resource, Logging compares the log entry to the sinks in that resource. Each sink whose filter matches the log entry writes a copy of the log entry to the sink's export destination.
 
