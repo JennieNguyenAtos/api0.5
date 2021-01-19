@@ -12,7 +12,7 @@ NOTE:  This is foundational work to identify the proper sources and techniques t
 ## Objective
 The objective of this ticket is to gather information about the different event generations mechanisms for the GCP Cloud provider. You might want to export logs for the following reasons: To store logs that are unlikely to be read but must be retained for compliance purposes, to use big-data analysis tools on your logs, or to stream your logs to other applications, other respositories, or third parties.
 
-!(https://cloud.google.com/logging/docs/images/logs-router-image.png)
+![Logs Router Image](https://cloud.google.com/logging/docs/images/logs-router-image.png)
 
 Exporting involves writing a filter that selects the log entries you want to export, and choosing a destination (such asn Pub/Sub: JSON messages delivered to Pub/Sub topics. Supports third party integrations such as Splunk, with Logging). The filter and destinations are held in an object called a sink. Sinks can be created in Google Cloud project, organizations, folders, and billing accounts. Link to sink propertiies and terminology: https://cloud.google.com/logging/docs/export#sink-terms
 
