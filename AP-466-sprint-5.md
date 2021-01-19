@@ -52,6 +52,5 @@ Pub/Sub pricing is based on:
 * Seek-related message storage: snapshots and retained acknowledged messages
 * [Pub Sub Pricing](https://cloud.google.com/pubsub/pricing)
 
-Trouble
 ## Recommendations
 Google recommmends using the Cloud Console and Pub/Sub to automate exporting logs.
