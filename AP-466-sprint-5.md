@@ -14,10 +14,11 @@ The objective of this ticket is to gather information about the different event 
 
 ![Logs Router Image](https://cloud.google.com/logging/docs/images/logs-router-image.png)
 
-Exporting involves writing a filter that selects the log entries you want to export, and choosing a destination (such asn Pub/Sub: JSON messages delivered to Pub/Sub topics. Supports third party integrations such as Splunk, with Logging). The filter and destinations are held in an object called a sink. Sinks can be created in Google Cloud project, organizations, folders, and billing accounts. [Link to sink propertiies and terminology](https://cloud.google.com/logging/docs/export#sink-terms)
+Exporting involves writing a filter that selects the log entries you want to export, and choosing a destination (such and Pub/Sub: JSON messages delivered to Pub/Sub topics). The filter and destinations are held in an object called a sink. Sinks can be created in Google Cloud project, organizations, folders, and billing accounts. [Link to sink propertiies and terminology](https://cloud.google.com/logging/docs/export#sink-terms)
 
 How sinks work: Every time a log entry arrives in a project, folder, billing account, or organization resource, Logging compares the log entry to the sinks in that resource. Each sink whose filter matches the log entry writes a copy of the log entry to the sink's export destination.
 
+What is Pub/Sub: an asynchronous messaging service that decouples services that produce events from services that process events. We will be using it for event ingestion and delivery for streaming analytics pipelines. A publisher application creates and sends messages to a topic. In this scenario, the publisher application can be any application that can make HTTPS requests to pubsub.googleapis.com and subscriber is the client application. 
 
 ## Results
 Results of research showed that there are multiple ways that event data can be exported back to the intended platform. You can export some or all of your logs to various sink destinations. The first option is to use GCP Cloud Logging API, and the second option is exporting logs with the Cloud Console and Pub/Sub.
@@ -37,10 +38,12 @@ Before you can create a sink, verify the following:
 * You have a destination service or have the ability to create a destination service.
 
 [Link on steps to creating a sink in the GCP Console](https://cloud.google.com/logging/docs/export/configure_export_v2#creating_sink)
+* When creating a sink, make sure that the sink destination is set to your desired Pub/Sub topic to receive the exported logs.
 
-How to grant Logging the Identity and Access Management permissions to write exported logs to your sink's export destination.
-
-When you create a sink, Logging creates a new service account for the sink, called a unique writer identity. You cannot manage this service account directly as it is owned and managed by Cloud Logging. The service account is deleted if the sink gets deleted.
+Next, configure your Pub/Sub topic
+* In **push delivery**, Pub/Sub initiates requests to your subscriber application to deliver messages. The subscriber explicitly calls the acknowledge method, using the returned ack ID to acknowledge receipt. The endpoint acknowledges the message by returning an HTTP success status code. A non-success response indicates that the message should be resent.
+* In pull delivery, your subscriber application initiates requests to the Pub/Sub server to retrieve messages. The subscribing application explicitly calls the pull method, which requests messages for delivery. The Pub/Sub server responds with the message (or an error if the queue is empty) , and an ack ID. The subscriber explicitly calls the acknowledge method, using the returned ack ID to acknowledge receipt.
+* Pub/Sub dynamically adjusts the rate of push requests based on the rate at which it receives success responses.
 
 
 ## Challenges
