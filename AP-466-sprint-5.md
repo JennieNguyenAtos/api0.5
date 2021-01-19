@@ -42,9 +42,6 @@ Before you can create a sink, verify the following:
 
 Next, configure your Pub/Sub topic
 * In **push delivery**, Pub/Sub initiates requests to your subscriber application to deliver messages. The subscriber explicitly calls the acknowledge method, using the returned ack ID to acknowledge receipt. The endpoint acknowledges the message by returning an HTTP success status code. A non-success response indicates that the message should be resent. [How to recieve messages using Push](https://cloud.google.com/pubsub/docs/push)
-* In pull delivery, your subscriber application initiates requests to the Pub/Sub server to retrieve messages. The subscribing application explicitly calls the pull method, which requests messages for delivery. The Pub/Sub server responds with the message (or an error if the queue is empty) , and an ack ID. The subscriber explicitly calls the acknowledge method, using the returned ack ID to acknowledge receipt.
-* Pub/Sub dynamically adjusts the rate of push requests based on the rate at which it receives success responses.
-
 
 ## Challenges
 **Pricing**: Cloud Logging doesn't charge to export logs, but destination charges might apply.
@@ -54,7 +51,7 @@ Pub/Sub pricing is based on:
 * Message ingestion and delivery
 * Seek-related message storage: snapshots and retained acknowledged messages
 * [Pub Sub Pricing](https://cloud.google.com/pubsub/pricing)
-
+* [Quotas and limits for PubSub](https://cloud.google.com/pubsub/quotas#quota_limits)
 
 ## Recommendations
 Google recommmends using the Cloud Console and Pub/Sub to automate exporting logs.
