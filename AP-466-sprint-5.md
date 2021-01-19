@@ -40,6 +40,10 @@ Before you can create a sink, verify the following:
 
 Next, configure your Pub/Sub topic
 * In **push delivery**, Pub/Sub initiates requests to your subscriber application to deliver messages. The subscriber explicitly calls the acknowledge method, using the returned ack ID to acknowledge receipt. The endpoint acknowledges the message by returning an HTTP success status code. A non-success response indicates that the message should be resent. [How to recieve messages using Push](https://cloud.google.com/pubsub/docs/push)
+* If a subscription uses push delivery, the Pub/Sub service delivers messages to a push endpoint. The push endpoint must be a publicly accessible HTTPS address. The server for the push endpoint must have a valid SSL certificate signed by a certificate authority.
+* The Pub/Sub service delivers messages to push endpoints from the same Google Cloud region that the Pub/Sub service stores the messages. The Pub/Sub service delivers messages from the same Google Cloud region on a best-effort basis.
+
+* When Pub/Sub delivers a message to a push endpoint, Pub/Sub sends the message in the body of a POST request. The body of the request is a JSON object and the message data is in the message.data field.
 
 ## Challenges
 **Pricing**: Cloud Logging doesn't charge to export logs, but destination charges might apply.
@@ -49,7 +53,9 @@ Pub/Sub pricing is based on:
 * Message ingestion and delivery
 * Seek-related message storage: snapshots and retained acknowledged messages
 * [Pub Sub Pricing](https://cloud.google.com/pubsub/pricing)
+* Quota is based on the size of the published Pubsub Messages. Publisher throughput per region: 12,000,000 kB per minute (200 MB/s) in large regions/3,000,000 kB per minute (50 MB/s) in small regions. Pull subscriber throughput per region: 24,000,000 kB per minute (400 MB/s) in large regions/6,000,000 kB per minute (100 MB/s) in small regions.
 * [Quotas and limits for PubSub](https://cloud.google.com/pubsub/quotas#quota_limits)
+
 
 ## Recommendations
 Google recommmends using the Cloud Console and Pub/Sub to automate exporting logs.
